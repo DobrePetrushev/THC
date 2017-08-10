@@ -84,7 +84,7 @@ var handlers = {
            factCount = item;  // zapisuvanje na brojot na faktite vo promenliva 
            console.log('factCount : ' + factCount );
            var factIndex = Math.floor(Math.random() * factCount-1); // random broj vo granicite na brojot na faktite
-            databaseManager.findFactsId(factIndex)
+            databaseManager.findFactsId(factIndex)  // dobivanje na fakt vrz osnova na random
               .then(item => {
                 var randomFact = item.cannabis_fact;
                 var speechOutput = GET_FACT_MESSAGE + randomFact;
