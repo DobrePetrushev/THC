@@ -79,18 +79,18 @@ var handlers = {
 //        var factArr = data;
         var factCount = 0;
         console.log('PRED DA VIKNAM');
-        databaseManager.findFactsCount()
+        databaseManager.findFactsCount()  //broj na faktite vo 'cannabis_facts'
         .then(item => {
-           factCount = item;
+           factCount = item;  // zapisuvanje na brojot na faktite vo promenliva 
            console.log('factCount : ' + factCount );
-           var factIndex = Math.floor(Math.random() * factCount-1);
+           var factIndex = Math.floor(Math.random() * factCount-1); // random broj vo granicite na brojot na faktite
             databaseManager.findFactsId(factIndex)
               .then(item => {
                 var randomFact = item.cannabis_fact;
                 var speechOutput = GET_FACT_MESSAGE + randomFact;
                 var userID = this.event.session.user.userID;
                 this.emit(':tellWithCard', speechOutput, SKILL_NAME, randomFact)
-                databaseManager.saveUserFactToDatabase(userID, randomFact); //dodavanje na randomFact vo db po user
+                databaseManager.saveUserFactToDatabase(userID, randomFact); //dodavanje na randomFact vo db po userID
               });
         })
         .catch(error => {
